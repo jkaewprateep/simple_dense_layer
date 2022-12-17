@@ -27,6 +27,8 @@ layer = MyDenseLayer(10)
 ```
 
 ### Input ###
+
+Simple input from chemical bonds, it indicated 0 padded make shape sticking and matched with label with the same couting or similar in some dimension.
 ```
 elements = { "None": 0, "X": 1, "A": 2 }
 input = [ [[ 180, 1 ], [ 180, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ]], 

@@ -89,4 +89,5 @@ tf.Tensor(
 
 ### Result : Loss value ###
 
+Bouncing of loss value to target try running longer to see the effects.
 ![Alt text](https://github.com/jkaewprateep/simple_dense_layer/blob/main/Figure_24.png?raw=true "Title")

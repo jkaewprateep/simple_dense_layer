@@ -42,6 +42,8 @@ input = tf.constant( input )
 ```
 
 ### Input to output prediction ###
+
+Input to output prediction is simply call layer with new value the weight is change with very small value but it is very slow for task running they using guids called optimizers that shortern of learning process not only gradient descents but step optimize and loss function return value handling.
 ```
 layer = MyDenseLayer(10)
 data = layer(input[0])

@@ -53,12 +53,14 @@ target_1 = int(tf.math.argmax(score))
 
 ### Sample prediction and loss function value ###
 
-It is not finish learning but we to see the first step all input they are finding mean and sticking to the mean value, when it see some different it start change one output from number of output or small value because some number indicated from mean and continue until indicated the patterns. The loss value we simply calculation from label prediction and label true that is some backhoff update.
+It is not finish learning but we to see the first step all input they are finding mean and sticking to the mean value, when it see some different it start change one output from number of output or small value because some number indicated from mean and continue until indicated the patterns. The loss value we simply calculation from label prediction and label true that is some backhoff update ( loss value change, find some matching patterns ).
 ```
 6: 6: 6: 6: -322.51672
 ```
 
 ## weight output ###
+
+You notice sine the first value from the weight as the array return { 118.57729, 118.67729, 118.77729 ... } it matched with optimizer weight + a small value from call the layer { 118.25526, 118.355255, 118.45525 ... }
 ```
 6: 6: 6: 6: -195.80348
 tf.Tensor(

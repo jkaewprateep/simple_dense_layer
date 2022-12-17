@@ -1,8 +1,22 @@
-import os
-from os.path import exists
 
 import tensorflow as tf
 
+import matplotlib.pyplot as plt
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+: Variables
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+elements = { "None": 0, "X": 1, "A": 2 }
+input = [ [[ 180, 1 ], [ 180, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ]], 
+          [[ 120, 1 ], [ 120, 1 ], [ 120, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ]],
+		  [[ 109.28, 1 ], [ 0, 1 ], [ 0, 1 ], [ 0, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ]],
+		  [[ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 360, 2 ]] ]	#  shape=(4, 7, 2), dtype=float32)
+
+label = [ 180, 120, 109.28, 90 ]	  
+input = tf.constant( input )
+step = 0
+
+history = { "loss_value" : [], "step" : [] }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 : Class / Functions
@@ -31,17 +45,8 @@ layer = MyDenseLayer(10)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 : Tasks
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
-elements = { "None": 0, "X": 1, "A": 2 }
-input = [ [[ 180, 1 ], [ 180, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ]], 
-          [[ 120, 1 ], [ 120, 1 ], [ 120, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ], [ 0, 0 ]],
-		  [[ 109.28, 1 ], [ 0, 1 ], [ 0, 1 ], [ 0, 1 ], [ 360, 2 ], [ 0, 0 ], [ 0, 0 ]],
-		  [[ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 90, 1 ], [ 360, 2 ]] ]	#  shape=(4, 7, 2), dtype=float32)
-
-label = [ 180, 120, 109.28, 90 ]
-		  
-input = tf.constant( input )
-
 layer = MyDenseLayer(10)
+
 data = layer(input[0])
 score = tf.nn.softmax(data[0])
 target_1 = int(tf.math.argmax(score))
@@ -63,7 +68,9 @@ optimizer = tf.constant( optimizer, dtype=tf.float32 )
 
 loss_value = 0
 
-for epoach in range( 1000000 ):
+for step in range( 1000 ):
+	step = step + 1
+
 	for i in range( input.shape[0] ):
 		data = layer(input[i])
 		score = tf.nn.softmax(data[0])
@@ -82,7 +89,14 @@ for epoach in range( 1000000 ):
 			
 		else:
 			pass
-			
+		
+		history["loss_value"].append(loss_value)
+		history["step"].append(step)
+		
 		print( str( target_1 ) + ": " + str( target_2 ) + ": " + str( target_3 ) + ": " + str( target_4 ) + ": " + str( loss_value.numpy() ) )
 		layer.set_weight( tf.reshape( optimizer, ( 2, 10 ) ) )
 		print( layer.get_weight() )
+
+
+plt.plot( history["loss_value"], history["step"] )
+plt.show()

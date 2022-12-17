@@ -52,6 +52,8 @@ target_1 = int(tf.math.argmax(score))
 ```
 
 ### Sample prediction and loss function value ###
+
+It is not finish learning but we to see the first step all input they are finding mean and sticking to the mean value, when it see some different it start change one output from number of output or small value because some number indicated from mean and continue until indicated the patterns. The loss value we simply calculation from label prediction and label true that is some backhoff update.
 ```
 6: 6: 6: 6: -322.51672
 ```

@@ -68,7 +68,7 @@ optimizer = tf.constant( optimizer, dtype=tf.float32 )
 
 loss_value = 0
 
-for step in range( 1000 ):
+for step in range( 10 ):
 	step = step + 1
 
 	for i in range( input.shape[0] ):
@@ -91,12 +91,13 @@ for step in range( 1000 ):
 			pass
 		
 		history["loss_value"].append(loss_value)
-		history["step"].append(step)
+		history["step"].append( tf.math.log(1.0 * step) )
 		
 		print( str( target_1 ) + ": " + str( target_2 ) + ": " + str( target_3 ) + ": " + str( target_4 ) + ": " + str( loss_value.numpy() ) )
 		layer.set_weight( tf.reshape( optimizer, ( 2, 10 ) ) )
 		print( layer.get_weight() )
 
 
-plt.plot( history["loss_value"], history["step"] )
+plt.plot( history["step"], history["loss_value"] )
+plt.xticks(range( int(min(history["step"])), int(max(history["step"]) ) + 1 ))
 plt.show()

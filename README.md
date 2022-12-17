@@ -72,3 +72,7 @@ tf.Tensor(
  [118.970375 119.50522  118.82853  118.52755  119.446815 119.44558
   119.26071  118.884346 118.22784  119.10322 ]], shape=(2, 10), dtype=float32)
 ```
+
+### Result : Loss value ###
+
+![Alt text](https://github.com/jkaewprateep/simple_dense_layer/blob/main/Figure_24.png?raw=true "Title")

@@ -1,5 +1,5 @@
 # simple_dense_layer
-Simple dense layer to study how does it works
+Simple dense layer to study how does it works, we know that the backward propagation algorithms compare of the network or layer weight from current to previous or compare of the result from the current to previous input. We add some small value as a learning rates adjusting by optimizers and assume that our layer has weight and bias ( W + b ). We now remove bias variable because to see the change of weight as a linear result running but the networks or the layer bias value can be any value and summing up to response the input by win the weight accumulating from its self-working.
 
 
 ### My custom Dense layer ####
